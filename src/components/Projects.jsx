@@ -43,7 +43,7 @@ const Projects = () => {
       description: "Portfolio développé avec React et Tailwind CSS présentant mes compétences et projets.",
       technologies: ["React", "Tailwind CSS", "JavaScript", "Vite"],
       githubLink: "https://github.com/Ilabarry/portfolio-barry",
-      demoLink: "https://portfolio-barry.vercel.app"
+      demoLink: "https://portfolio-barry-rose.vercel.app/"
     }
   ]
 
