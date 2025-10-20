@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-gray-50 text-gray-900 pt-16;
+  }
+  
+  body.dark {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  .card-pro {
+    @apply bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col transition-all duration-300;
+  }
+  
+  .card-pro:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+  
+  .dark .card-pro {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .icon-wrap {
+    @apply w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-3;
+  }
+  
+  .dark .icon-wrap {
+    @apply bg-blue-900/30 text-blue-400;
+  }
+  
+  .btn-social {
+    @apply w-10 h-10 rounded-full bg-white/20 border border-white/35 text-white flex items-center justify-center transition-all duration-200;
+  }
+  
+  .btn-social:hover {
+    @apply -translate-y-0.5 bg-white/35;
+  }
+  
+  .badge-tech {
+    @apply inline-block text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-600 mr-1 mb-1;
+  }
+  
+  .dark .badge-tech {
+    @apply bg-blue-900/30 text-blue-300;
+  }
+  
+  .list-checked {
+    @apply list-none pl-0;
+  }
+  
+  .list-checked li {
+    @apply pl-6 relative mb-2;
+  }
+  
+  .list-checked li:before {
+    content: "✓";
+    @apply absolute left-0 text-blue-600 font-bold;
+  }
+  
+  /* Classes utilitaires pour les sections */
+  .section-pad {
+    @apply py-20;
+  }
+  
+  .bg-soft {
+    @apply bg-blue-50;
+  }
+  
+  .dark .bg-soft {
+    @apply bg-gray-800;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-black mb-6 text-blue-600 text-center;
+  }
+  
+  .text-muted {
+    @apply text-gray-600;
+  }
+  
+  .dark .text-muted {
+    @apply text-gray-400;
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+}
