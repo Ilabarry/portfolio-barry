@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
+import { Code, Database, BarChart3, Cpu, Palette, Server, Target, Zap } from "lucide-react"
 
-const SkillBar = ({ name, percentage }) => {
+const SkillBar = ({ name, percentage, delay }) => {
   const [isVisible, setIsVisible] = useState(false)
   const barRef = useRef(null)
 
@@ -8,7 +9,9 @@ const SkillBar = ({ name, percentage }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setTimeout(() => {
+            setIsVisible(true)
+          }, delay)
         }
       },
       { threshold: 0.5 }
@@ -23,21 +26,31 @@ const SkillBar = ({ name, percentage }) => {
         observer.unobserve(barRef.current)
       }
     }
-  }, [])
+  }, [delay])
 
   return (
-    <div className="skill mb-4" ref={barRef}>
-      <div className="flex justify-between mb-2">
-        <span className="font-medium">{name}</span>
-        <span>{percentage}%</span>
+    <div className="skill mb-6" ref={barRef}>
+      <div className="flex justify-between items-center mb-3">
+        <span className="font-semibold text-gray-800 text-sm">{name}</span>
+        <span className="text-blue-600 font-bold text-sm">{isVisible ? `${percentage}%` : '0%'}</span>
       </div>
-      <div className="progress bg-gray-200 rounded-full h-2 overflow-hidden">
-        <div 
-          className="progress-bar bg-blue-700 h-full transition-all duration-1000 ease-out"
-          style={{ 
-            width: isVisible ? `${percentage}%` : '0%'
-          }}
-        ></div>
+      <div className="relative">
+        <div className="progress bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div 
+            className="progress-bar bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 h-full transition-all duration-1000 ease-out rounded-full"
+            style={{ 
+              width: isVisible ? `${percentage}%` : '0%'
+            }}
+          ></div>
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div 
+            className="h-1 bg-white/30 rounded-full transition-all duration-1000 ease-out"
+            style={{ 
+              width: isVisible ? `${percentage}%` : '0%'
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   )
@@ -46,59 +59,215 @@ const SkillBar = ({ name, percentage }) => {
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Frontend & Mobile",
+      icon: <Palette className="w-6 h-6" />,
+      title: "Frontend ",
+      color: "from-blue-500 to-blue-600",
       skills: [
-        { name: "HTML/CSS", percentage: 95 },
-        { name: "JavaScript", percentage: 85 },
-        { name: "React.js", percentage: 80 },
-        { name: "Bootstrap", percentage: 95 },
-        { name: "Tailwind CSS", percentage: 75 }
-      ]
+        { name: "HTML/CSS", percentage: 95, delay: 100 },
+        { name: "JavaScript", percentage: 85, delay: 200 },
+        { name: "React.js", percentage: 80, delay: 300 },
+        { name: "Bootstrap", percentage: 95, delay: 400 },
+        { name: "Tailwind CSS", percentage: 75, delay: 500 }
+      ],
+      delay: 100
     },
     {
+      icon: <Server className="w-6 h-6" />,
       title: "Backend & Bases de données",
+      color: "from-green-500 to-green-600",
       skills: [
-        { name: "PHP/Laravel", percentage: 90 },
-        { name: "Node.js/Express", percentage: 75 },
-        { name: "MySQL", percentage: 90 },
-        { name: "MongoDB", percentage: 70 },
-        { name: "PostgreSQL", percentage: 75 }
-      ]
+        { name: "PHP/Laravel", percentage: 90, delay: 150 },
+        { name: "Node.js/Express", percentage: 75, delay: 250 },
+        { name: "MySQL", percentage: 90, delay: 350 },
+        { name: "MongoDB", percentage: 70, delay: 450 },
+        { name: "PostgreSQL", percentage: 75, delay: 550 }
+      ],
+      delay: 200
     },
     {
+      icon: <BarChart3 className="w-6 h-6" />,
       title: "Outils & Data Analysis",
+      color: "from-purple-500 to-purple-600",
       skills: [
-        { name: "Git/GitHub", percentage: 85 },
-        { name: "Excel Avancé", percentage: 95 },
-        { name: "Power BI", percentage: 65 },
-        { name: "Power Query/Pivot", percentage: 85 },
-        { name: "VS Code", percentage: 95 }
-      ]
+        { name: "Git/GitHub", percentage: 85, delay: 200 },
+        { name: "Excel Avancé", percentage: 95, delay: 300 },
+        { name: "Power BI", percentage: 50, delay: 400 },
+        { name: "Power Query/Pivot", percentage: 85, delay: 500 },
+        { name: "VS Code", percentage: 95, delay: 600 }
+      ],
+      delay: 300
+    }
+  ]
+
+  const expertiseAreas = [
+    {
+      icon: <Code className="w-8 h-8" />,
+      title: "Développement Web",
+      description: "Applications modernes et responsives",
+      delay: 100
+    },
+    {
+      icon: <Database className="w-8 h-8" />,
+      title: "Bases de Données",
+      description: "Optimisation et modélisation",
+      delay: 200
+    },
+    {
+      icon: <Cpu className="w-8 h-8" />,
+      title: "Architecture Logicielle",
+      description: "Solutions scalables et maintenables",
+      delay: 300
+    },
+    {
+      icon: <BarChart3 className="w-8 h-8" />,
+      title: "Analyse de Données",
+      description: "Insights et visualisations",
+      delay: 400
     }
   ]
 
   return (
-    <section id="skills" className="section-pad bg-gray-50 py-20">
+    <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-3xl md:text-4xl font-black text-center text-primary mb-12">
-          Compétences
-        </h2>
+        {/* En-tête */}
+        <div className="text-center mb-16">
+          <span 
+            data-aos="fade-down"
+            className="text-blue-600 font-semibold text-lg mb-2 block"
+          >
+            Mes Compétences
+          </span>
+          <h2 
+            data-aos="fade-up"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
+            Expertise <span className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">Technique</span>
+          </h2>
+          <p 
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+          >
+            Un ensemble de compétences techniques diversifiées pour répondre à tous vos besoins en développement et analyse de données.
+          </p>
+        </div>
 
-        <div className="row grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Domaines d'expertise */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+          {expertiseAreas.map((area, index) => (
+            <div 
+              key={index}
+              data-aos="zoom-in"
+              data-aos-delay={area.delay}
+              className="text-center group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <div className="text-white">
+                  {area.icon}
+                </div>
+              </div>
+              <h3 className="font-bold text-gray-900 mb-2">{area.title}</h3>
+              <p className="text-gray-600 text-sm">{area.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Grille des compétences */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, index) => (
-            <div key={index} className="col-md-4">
-              <div className="card-pro h-full   border-b-4 hover:border-b-blue-700">
-                <h3 className="h6 uppercase text-primary font-bold mb-6">{category.title}</h3>
-                {category.skills.map((skill, idx) => (
-                  <SkillBar 
-                    key={idx}
-                    name={skill.name}
-                    percentage={skill.percentage}
-                  />
-                ))}
+            <div 
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={category.delay}
+              className="group"
+            >
+              <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 p-6 h-full">
+                {/* En-tête de la catégorie */}
+                <div className={`bg-gradient-to-r ${category.color} rounded-xl p-4 text-white mb-6`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="p-2 bg-white/20 rounded-lg mr-3">
+                        {category.icon}
+                      </div>
+                      <h3 className="text-lg font-bold">{category.title}</h3>
+                    </div>
+                    <div className="text-white/80 text-sm">
+                      {category.skills.length} compétences
+                    </div>
+                  </div>
+                </div>
+
+                {/* Barres de compétences */}
+                <div className="space-y-2">
+                  {category.skills.map((skill, idx) => (
+                    <SkillBar 
+                      key={idx}
+                      name={skill.name}
+                      percentage={skill.percentage}
+                      delay={skill.delay}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Section niveau d'expertise */}
+        <div 
+          data-aos="fade-up"
+          data-aos-delay="200"
+          className="bg-gradient-to-r from-gray-900 to-blue-900 rounded-2xl p-8 text-white"
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-4">Niveaux d'Expertise</h3>
+            <p className="text-blue-200 max-w-2xl mx-auto">
+              Une progression constante dans l'acquisition et la maîtrise des technologies modernes
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { level: "Expert", color: "from-green-500 to-green-600", range: "90-100%", count: 4, delay: 100 },
+              { level: "Avancé", color: "from-blue-500 to-blue-600", range: "75-89%", count: 6, delay: 200 },
+              { level: "Intermédiaire", color: "from-yellow-500 to-yellow-600", range: "60-74%", count: 3, delay: 300 },
+              { level: "Débutant", color: "from-gray-500 to-gray-600", range: "0-59%", count: 2, delay: 400 }
+            ].map((item, index) => (
+              <div 
+                key={index}
+                data-aos="zoom-in"
+                data-aos-delay={item.delay}
+                className="text-center"
+              >
+                <div className={`bg-gradient-to-r ${item.color} rounded-xl p-4 mb-3`}>
+                  <div className="text-2xl font-bold">{item.count}</div>
+                  <div className="text-sm opacity-90">{item.level}</div>
+                </div>
+                <p className="text-blue-200 text-sm">{item.range}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div 
+          data-aos="fade-up"
+          data-aos-delay="300"
+          className="text-center mt-12"
+        >
+          <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ces compétences vous intéressent ?</h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Discutons de la manière dont je peux mettre mon expertise au service de votre projet.
+            </p>
+            <a 
+              href="#contact" 
+              className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white px-8 py-4 rounded-lg font-semibold border-b-4 hover:border-b-blue-700 transition-all duration-300 inline-flex items-center shadow-lg hover:shadow-xl"
+            >
+              <span className="mr-3">💬</span>
+              Discuter de mon projet
+            </a>
+          </div>
         </div>
       </div>
     </section>

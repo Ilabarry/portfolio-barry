@@ -1,3 +1,5 @@
+import { ExternalLink, Github, Calendar, Code, Eye, Star, FolderOpen } from "lucide-react";
+
 const Projects = () => {
   const projects = [
     {
@@ -7,7 +9,10 @@ const Projects = () => {
       description: "Système complet de gestion de bibliothèque avec réservations automatisées et gestion d'événements culturels.",
       technologies: ["Laravel", "Bootstrap", "MySQL", "JavaScript"],
       githubLink: "https://github.com/Ilabarry/Laravel-gestion_bibbliotheque-evenement",
-      demoLink: null
+      demoLink: null,
+      category: "Full-Stack",
+      featured: true,
+      delay: 100
     },
     {
       image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -16,7 +21,10 @@ const Projects = () => {
       description: "Plateforme de réservation de transport inter-régional avec système de paiement en ligne sécurisé.",
       technologies: ["PHP", "JavaScript", "Bootstrap", "MySQL", "PHPMailer"],
       githubLink: "https://github.com/Ilabarry/Transport",
-      demoLink: null
+      demoLink: null,
+      category: "Full-Stack",
+      featured: false,
+      delay: 200
     },
     {
       image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
@@ -25,154 +33,262 @@ const Projects = () => {
       description: "Plateforme collaborative permettant aux développeurs de partager, découvrir et réutiliser des extraits de code.",
       technologies: ["PHP", "JavaScript", "Bootstrap", "MySQL"],
       githubLink: null,
-      demoLink: "https://codeh24.infinityfreeapp.com"
+      demoLink: "https://codeh24.infinityfreeapp.com",
+      category: "Full-Stack",
+      featured: false,
+      delay: 300
     },
     {
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-      title: "FADJ-MA - Plateforme Médcines",
-      period: "Décembre 2024",
-      description: "Site web moderne pour pemettre aux medcins de d'ajouter et visualiser des medicamments",
+      title: "FADJ-MA - Plateforme Médicaments",
+      period: "Septembre 2025",
+      description: "Site web moderne permettant aux médecins d'ajouter et visualiser des médicaments avec une interface intuitive.",
       technologies: ["React", "Tailwind CSS", "Laravel", "Vite"],
       githubLink: "https://github.com/Ilabarry/fadj-ma",
-      demoLink: "https://fadj-ma.vercel.app"
+      demoLink: "https://fadj-ma.vercel.app",
+      category: "Full-Stack",
+      featured: true,
+      delay: 400
     },
     {
       image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       title: "Portfolio Personnel",
-      period: "Décembre 2024",
-      description: "Portfolio développé avec React et Tailwind CSS présentant mes compétences et projets.",
+      period: "Octobre 2025",
+      description: "Portfolio développé avec React et Tailwind CSS présentant mes compétences et projets de manière professionnelle.",
       technologies: ["React", "Tailwind CSS", "JavaScript", "Vite"],
       githubLink: "https://github.com/Ilabarry/portfolio-barry",
-      demoLink: "https://portfolio-barry-rose.vercel.app/"
+      demoLink: "https://portfolio-barry-rose.vercel.app/",
+      category: "Frontend",
+      featured: false,
+      delay: 500
     }
-  ]
+  ];
 
   return (
-    <section id="projects" className="section-pad py-12 bg-white">
+    <section id="projects" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-3xl md:text-4xl font-black text-center text-primary mb-4">
-          Mes Projets Récents
-        </h2>
-        <p className="text-center text-muted mb-12">Développement d'applications web et solutions digitales</p>
+        {/* En-tête */}
+        <div className="text-center mb-16">
+          <span 
+            data-aos="fade-down"
+            className="text-blue-600 font-semibold text-lg mb-2 block"
+          >
+            Mon Portfolio
+          </span>
+          <h2 
+            data-aos="fade-up"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
+            Projets <span className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">Récents</span>
+          </h2>
+          <p 
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+          >
+            Découvrez une sélection de mes réalisations en développement web full-stack et applications modernes.
+          </p>
+        </div>
 
-        <div className="row grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grille des projets */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {projects.map((project, index) => (
-            <div key={index} className="col-md-4">
-              <div className="card-pro h-full border-b-4 hover:border-b-blue-700 transition-all duration-300">
-                <div className="project-thumb h-48 overflow-hidden rounded-xl mb-4">
+            <div 
+              key={index}
+              data-aos="fade-up"
+              data-aos-delay={project.delay}
+            >
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden h-full flex flex-col">
+                {/* Image du projet */}
+                <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                </div>
-                <div className="project-date text-sm text-muted mb-2 flex items-center">
-                  <span className="me-1">📅</span> {project.period}
-                </div>
-                <h3 className="h5 font-bold mb-3 text-gray-800">{project.title}</h3>
-                <p className="text-muted text-sm mb-4">{project.description}</p>
-                <div className="mb-4">
-                  {project.technologies.map((tech, idx) => (
-                    <span key={idx} className="badge-tech">
-                      {tech}
+                  <div className="absolute top-4 left-4">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      project.category === "Frontend" 
+                        ? "bg-blue-100 text-blue-800" 
+                        : "bg-green-100 text-green-800"
+                    }`}>
+                      {project.category}
                     </span>
-                  ))}
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  {project.githubLink && (
-                    <a 
-                      href={project.githubLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="btn border border-gray-300 text-gray-700 flex-1 py-2 rounded-lg font-medium flex items-center justify-center hover:bg-gray-100 transition-colors"
-                    >
-                      <span className="me-2">🐙</span>
-                      Code
-                    </a>
-                  )}
-                  {project.demoLink && (
-                    <a 
-                      href={project.demoLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="btn border border-primary text-primary flex-1 py-2 rounded-lg font-medium flex items-center justify-center hover:bg-gray-100 transition-colors"
-                    >
-                      <span className="me-2">👁️</span>
-                      Live
-                    </a>
-                  )}
+
+                {/* Contenu du projet */}
+                <div className="p-6 flex-1 flex flex-col">
+                  {/* En-tête */}
+                  <div className="flex items-center text-gray-500 text-sm mb-3">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    {project.period}
+                  </div>
+
+                  {/* Titre et description */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-1">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="mb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, idx) => (
+                        <span 
+                          key={idx}
+                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Boutons d'action */}
+                  <div className="flex gap-3 pt-4 border-t border-gray-100">
+                    {project.githubLink && (
+                      <a 
+                        href={project.githubLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-2 px-4 rounded-lg font-semibold border-b-4 hover:border-b-blue-700 transition-all duration-300 flex items-center justify-center text-sm"
+                      >
+                        <Github className="w-4 h-4 mr-2" />
+                        Code
+                      </a>
+                    )}
+                    {project.demoLink && (
+                      <a 
+                        href={project.demoLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center text-sm"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Hackathon CineCritique - Projet spécial */}
-        <div className="row mt-12">
-          <div className="col-12">
-            <div className="card-pro bg-gradient-to-r from-primary to-blue-600 text-black border-x-4 hover:border-x-blue-400">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="md:w-2/3">
-                  <h3 className="h4 font-bold mb-2">Hackathon CineCritique</h3>
-                  <p className="mb-0 opacity-90">Plateforme communautaire de découverte et notation de films utilisant l'API TMDb</p>
-                  <div className="mt-3">
-                    {["React.js", "Node.js", "PostgreSQL", "Tailwind CSS"].map((tech, idx) => (
-                      <span key={idx} className="badge bg-white text-primary me-2 px-3 py-1 rounded-full text-sm font-semibold">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+        {/* Projet spécial - Hackathon CineCritique */}
+        <div 
+          data-aos="zoom-in"
+          data-aos-delay="200"
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl p-8 text-white">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+              <div className="lg:w-2/3">
+                <div className="flex items-center mb-3">
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold mr-3">
+                    🏆 Hackathon
+                  </span>
+                  <span className="text-blue-200 text-sm">Projet Collaboratif</span>
                 </div>
-                <div className="md:w-1/3 md:text-right">
-                  <a 
-                    href="https://github.com/KhadijaBachir/ProjetCineCritique/tree/main/frontend/project" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn bg-white text-primary px-6 py-3 rounded-lg font-medium inline-flex items-center hover:bg-gray-100 transition-colors"
-                  >
-                    <span className="me-2">🐙</span>Voir le frontend
-                  </a>
-
-                  <a 
-                    href="https://github.com/diallohouleymatou/cinecritique" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="btn bg-white text-primary px-6 py-3 rounded-lg font-medium inline-flex items-center hover:bg-gray-100 transition-colors"
-                  >
-                    <span className="me-2">🐙</span>Voir le backend
-                  </a>
+                <h3 className="text-2xl font-bold mb-3">CineCritique</h3>
+                <p className="text-blue-100 text-lg mb-4">
+                  Plateforme communautaire de découverte et notation de films utilisant l'API TMDb
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["React.js", "Node.js", "PostgreSQL", "Tailwind CSS", "API REST"].map((tech, idx) => (
+                    <span key={idx} className="bg-white/20 px-3 py-1 rounded-full text-sm">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              </div>
+              <div className="lg:w-1/3 flex flex-col gap-3">
+                <a 
+                  href="https://github.com/KhadijaBachir/ProjetCineCritique/tree/main/frontend/project" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-300 flex items-center justify-center"
+                >
+                  <Code className="w-5 h-5 mr-2" />
+                  Frontend
+                </a>
+                <a 
+                  href="https://github.com/diallohouleymatou/cinecritique" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center"
+                >
+                  <Code className="w-5 h-5 mr-2" />
+                  Backend
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Section statistiques */}
-        {/* <div className="row mt-12">
-          <div className="col-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              <div className="bg-blue-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-primary mb-2">{projects.length}+</div>
-                <div className="text-sm text-gray-600">Projets Réalisés</div>
+        {/* Statistiques */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {[
+            { number: projects.length, label: "Projets Réalisés", color: "blue", delay: 100 },
+            { number: 10, label: "Technologies Maîtrisées", color: "green", delay: 200 },
+            { number: 2, label: "Projets React", color: "purple", delay: 300 },
+            { number: 3, label: "Projets PHP", color: "orange", delay: 400 }
+          ].map((stat, index) => (
+            <div 
+              key={index}
+              data-aos="flip-up"
+              data-aos-delay={stat.delay}
+              className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100"
+            >
+              <div className={`text-3xl font-bold text-${stat.color}-600 mb-2`}>
+                {stat.number}+
               </div>
-              <div className="bg-green-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">5+</div>
-                <div className="text-sm text-gray-600">Technologies Maîtrisées</div>
-              </div>
-              <div className="bg-purple-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-purple-600 mb-2">2</div>
-                <div className="text-sm text-gray-600">Projets React</div>
-              </div>
-              <div className="bg-orange-50 rounded-xl p-6">
-                <div className="text-3xl font-bold text-orange-600 mb-2">3</div>
-                <div className="text-sm text-gray-600">Projets PHP</div>
+              <div className="text-gray-600 text-sm font-medium">
+                {stat.label}
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* CTA Final */}
+        <div 
+          data-aos="fade-up"
+          data-aos-delay="300"
+          className="text-center"
+        >
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              Intéressé par mon travail ?
+            </h3>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Discutons de la manière dont je peux vous aider à concrétiser votre prochain projet digital.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="#contact" 
+                className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white px-8 py-4 rounded-lg font-semibold border-b-4 hover:border-b-blue-700 transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+              >
+                <span className="mr-3">💬</span>
+                Discuter d'un projet
+              </a>
+              <a 
+                href="https://github.com/Ilabarry" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center"
+              >
+                <Github className="w-5 h-5 mr-3" />
+                Voir GitHub
+              </a>
+            </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
