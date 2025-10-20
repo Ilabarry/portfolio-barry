@@ -29,10 +29,10 @@ const Hero = () => {
                 <TypeAnimation
                   sequence={[
                     "Développeur Full-Stack 💻", // phrase 1
-                    1000,                       // attend 2 secondes
+                    2500,                       // attend 2 secondes
                     "",                         // efface
                     "Analyste de Données 📊",    // phrase 2
-                    1000,                       // attend encore 2 secondes
+                    2500,                       // attend encore 2 secondes
                     "",                         // efface
                   ]}
                   wrapper="span"
