@@ -164,7 +164,7 @@ const Footer = () => {
               <span className="text-gray-400 flex items-center">
                 <Code className="w-4 h-4 mr-1" />
                 <Database className="w-4 h-4 mr-1" />
-                Développé avec React / Tailwind CSS / EmailJS
+                Développé avec React, Tailwind CSS et EmailJS
               </span>
             </div>
 

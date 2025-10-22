@@ -34,7 +34,7 @@ const About = () => {
               </p>
               <div className="flex items-center text-sm text-gray-600">
                 <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                Disponible pour missions freelance, stqge ou CDD
+                Disponible pour missions: freelance, stage ou CDD
               </div>
             </div>
 
