@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, MessageCirclePlus, X, MapPin, Send, Clock, CheckCircle, FileText } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCirclePlus, X, MapPin, Send, Clock, CheckCircle, FileText, Phone } from "lucide-react";
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -95,69 +95,69 @@ const Contact = () => {
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div 
           data-aos="zoom-in"
-          className="bg-white rounded-2xl max-w-md w-full p-6"
+          className="bg-white rounded-xl sm:rounded-2xl max-w-md w-full p-4 sm:p-6"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-bold text-green-600 flex items-center">
-              <CheckCircle className="w-6 h-6 mr-2" />
+          <div className="flex justify-between items-center mb-3 sm:mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-green-600 flex items-center">
+              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
               Message envoyé !
             </h3>
             <button
               onClick={() => setShowSuccessModal(false)}
               className="text-gray-400 hover:text-gray-600 transition"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
           
-          <div className="text-center py-4">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Send className="w-8 h-8 text-green-600" />
+          <div className="text-center py-3 sm:py-4">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <Send className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
             </div>
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">
               Merci pour votre message !
             </h4>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">
               Je vous répondrai dans les plus brefs délais. En attendant, n'hésitez pas à me contacter directement sur les réseaux.
             </p>
           </div>
 
-          <div className="border-t pt-4">
-            <h5 className="font-semibold text-gray-800 mb-3 text-center">Contact rapide :</h5>
-            <div className="flex justify-center gap-4">
+          <div className="border-t pt-3 sm:pt-4">
+            <h5 className="font-semibold text-gray-800 mb-2 sm:mb-3 text-center text-sm sm:text-base">Contact rapide :</h5>
+            <div className="flex justify-center gap-3 sm:gap-4">
               <a
                 href="https://wa.me/221783249424"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition transform hover:scale-110"
+                className="bg-green-600 text-white p-2 sm:p-3 rounded-full hover:bg-green-700 transition transform hover:scale-110"
                 aria-label="WhatsApp"
               >
-                <Phone className="w-5 h-5" />
+                <MessageCirclePlus className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
                 href="mailto:barryila35@gmail.com"
-                className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition transform hover:scale-110"
+                className="bg-red-600 text-white p-2 sm:p-3 rounded-full hover:bg-red-700 transition transform hover:scale-110"
                 aria-label="Email"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/ila-barry-259008343/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition transform hover:scale-110"
+                className="bg-blue-600 text-white p-2 sm:p-3 rounded-full hover:bg-blue-700 transition transform hover:scale-110"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
           </div>
 
           <button
             onClick={() => setShowSuccessModal(false)}
-            className="w-full mt-4 bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center"
+            className="w-full mt-3 sm:mt-4 bg-blue-600 text-white py-2 sm:py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center text-sm sm:text-base"
           >
-            <CheckCircle className="w-5 h-5 mr-2" />
+            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Compris, merci !
           </button>
         </div>
@@ -167,7 +167,7 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: <MessageCirclePlus className="w-6 h-6" />,
+      icon: <MessageCirclePlus className="w-5 h-5 sm:w-6 sm:h-6" />,
       platform: "WhatsApp",
       details: "+221 78 324 94 24",
       description: "Réponse instantanée",
@@ -176,7 +176,7 @@ const Contact = () => {
       delay: 100
     },
     {
-      icon: <Mail className="w-6 h-6" />,
+      icon: <Mail className="w-5 h-5 sm:w-6 sm:h-6" />,
       platform: "Email",
       details: "barryila35@gmail.com",
       description: "Projets détaillés",
@@ -185,7 +185,7 @@ const Contact = () => {
       delay: 200
     },
     {
-      icon: <Linkedin className="w-6 h-6" />,
+      icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />,
       platform: "LinkedIn",
       details: "Profil professionnel",
       description: "Réseau professionnel",
@@ -194,7 +194,7 @@ const Contact = () => {
       delay: 300
     },
     {
-      icon: <Github className="w-6 h-6" />,
+      icon: <Github className="w-5 h-5 sm:w-6 sm:h-6" />,
       platform: "GitHub",
       details: "Code source",
       description: "Mes projets",
@@ -218,62 +218,62 @@ const Contact = () => {
     <>
       <SuccessModal />
       
-      <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6">
           {/* En-tête */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <span 
               data-aos="fade-down"
-              className="text-blue-600 font-semibold text-lg mb-2 block"
+              className="text-blue-600 font-semibold text-base sm:text-lg mb-2 block"
             >
               Contact
             </span>
             <h2 
               data-aos="fade-up"
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4"
             >
               Travaillons <span className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">ensemble</span>
             </h2>
             <p 
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4"
             >
               Discutons de votre projet et voyons comment je peux vous aider à le concrétiser avec des solutions digitales performantes.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Colonne de gauche - Informations de contact */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Présentation */}
               <div 
                 data-aos="fade-right"
                 data-aos-delay="100"
-                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-100"
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <MapPin className="w-6 h-6 text-blue-600 mr-3" />
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 mr-2 sm:mr-3" />
                   Informations de contact
                 </h3>
                 
-                <div className="flex items-center mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4">
-                    <MapPin className="w-6 h-6" />
+                <div className="flex items-center mb-4 sm:mb-6 p-3 sm:p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-3 sm:mr-4">
+                    <MapPin className="w-4 h-4 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Localisation</div>
-                    <div className="text-gray-600">Saint-Louis, Sénégal</div>
-                    <div className="text-blue-600 text-sm font-medium mt-1 flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
+                    <div className="font-semibold text-gray-900 text-sm sm:text-base">Localisation</div>
+                    <div className="text-gray-600 text-sm sm:text-base">Saint-Louis, Sénégal</div>
+                    <div className="text-blue-600 text-xs sm:text-sm font-medium mt-1 flex items-center">
+                      <Clock className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                       Disponible en remote
                     </div>
                   </div>
                 </div>
 
                 {/* Méthodes de contact */}
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-gray-900 text-lg mb-4">Contact direct</h4>
+                <div className="space-y-3 sm:space-y-4">
+                  <h4 className="font-semibold text-gray-900 text-base sm:text-lg mb-3 sm:mb-4">Contact direct</h4>
                   {contactMethods.map((method, index) => (
                     <a
                       key={index}
@@ -282,14 +282,14 @@ const Contact = () => {
                       rel="noopener noreferrer"
                       data-aos="fade-right"
                       data-aos-delay={method.delay}
-                      className={`flex items-center p-4 rounded-xl border transition-all duration-300 hover:shadow-md ${getColorClasses(method.color)}`}
+                      className={`flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border transition-all duration-300 hover:shadow-md ${getColorClasses(method.color)}`}
                     >
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mr-3 sm:mr-4">
                         {method.icon}
                       </div>
                       <div className="flex-1">
-                        <div className="font-semibold">{method.platform}</div>
-                        <div className="text-sm opacity-90">{method.details}</div>
+                        <div className="font-semibold text-sm sm:text-base">{method.platform}</div>
+                        <div className="text-xs sm:text-sm opacity-90">{method.details}</div>
                       </div>
                       <div className="text-right">
                         <div className="text-xs font-medium opacity-75">{method.description}</div>
@@ -303,21 +303,21 @@ const Contact = () => {
               <div 
                 data-aos="fade-right"
                 data-aos-delay="200"
-                className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white"
               >
-                <h4 className="font-bold text-lg mb-4 flex items-center">
-                  <CheckCircle className="w-5 h-5 mr-2" />
+                <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4 flex items-center">
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Mes engagements
                 </h4>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {[
                     "Réponse sous 24 heures",
                     "Devis personnalisé gratuit",
                     "Communication transparente",
                     "Respect des délais convenus"
                   ].map((engagement, index) => (
-                    <div key={index} className="flex items-center text-blue-100">
-                      <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                    <div key={index} className="flex items-center text-blue-100 text-xs sm:text-sm">
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full mr-2 sm:mr-3"></div>
                       {engagement}
                     </div>
                   ))}
@@ -329,19 +329,19 @@ const Contact = () => {
             <div 
               data-aos="fade-left"
               data-aos-delay="100"
-              className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
+              className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg border border-gray-100"
             >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Envoyez-moi un message</h3>
-                <p className="text-gray-600">
+              <div className="text-center mb-6 sm:mb-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Envoyez-moi un message</h3>
+                <p className="text-gray-600 text-sm sm:text-base">
                   Remplissez ce formulaire et je vous recontacte rapidement pour discuter de votre projet.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   <div data-aos="fade-left" data-aos-delay="150">
-                    <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="firstName" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">
                       Prénom *
                     </label>
                     <input
@@ -350,14 +350,14 @@ const Contact = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                       required
                       disabled={isSubmitting}
                       placeholder="Votre prénom"
                     />
                   </div>
                   <div data-aos="fade-left" data-aos-delay="200">
-                    <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label htmlFor="lastName" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">
                       Nom *
                     </label>
                     <input
@@ -366,7 +366,7 @@ const Contact = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                       required
                       disabled={isSubmitting}
                       placeholder="Votre nom"
@@ -375,7 +375,7 @@ const Contact = () => {
                 </div>
 
                 <div data-aos="fade-left" data-aos-delay="250">
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">
                     Email *
                   </label>
                   <input
@@ -384,7 +384,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                     placeholder="votre@email.com"
@@ -392,7 +392,7 @@ const Contact = () => {
                 </div>
 
                 <div data-aos="fade-left" data-aos-delay="300">
-                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="subject" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">
                     Sujet *
                   </label>
                   <input
@@ -401,7 +401,7 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                     placeholder="Objet de votre message"
@@ -409,7 +409,7 @@ const Contact = () => {
                 </div>
 
                 <div data-aos="fade-left" data-aos-delay="350">
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1 sm:mb-2">
                     Message *
                   </label>
                   <textarea
@@ -417,8 +417,8 @@ const Contact = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows="6"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
+                    rows="5"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                     placeholder="Décrivez votre projet, vos objectifs, vos contraintes techniques..."
@@ -430,16 +430,16 @@ const Contact = () => {
                   disabled={isSubmitting}
                   data-aos="zoom-in"
                   data-aos-delay="400"
-                  className="w-full bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="w-full bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm sm:text-base"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                      <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2 sm:mr-3"></div>
                       Envoi en cours...
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-3" />
+                      <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                       Envoyer le message
                     </>
                   )}
@@ -448,17 +448,17 @@ const Contact = () => {
                 {alert.show && (
                   <div 
                     data-aos="fade-up"
-                    className={`p-4 rounded-lg border ${
+                    className={`p-3 sm:p-4 rounded-lg border ${
                       alert.type === 'success' 
                         ? 'bg-green-50 text-green-800 border-green-200' 
                         : 'bg-red-50 text-red-800 border-red-200'
-                    }`}
+                    } text-sm sm:text-base`}
                   >
                     <div className="flex items-center">
                       {alert.type === 'success' ? (
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2" />
                       ) : (
-                        <X className="w-5 h-5 text-red-500 mr-2" />
+                        <X className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 mr-2" />
                       )}
                       {alert.message}
                     </div>
@@ -470,13 +470,13 @@ const Contact = () => {
               <div 
                 data-aos="fade-up"
                 data-aos-delay="450"
-                className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200"
+                className="mt-4 sm:mt-6 p-3 sm:p-4 bg-blue-50 rounded-lg border border-blue-200"
               >
-                <p className="text-blue-800 font-semibold text-sm mb-3 flex items-center">
-                  <CheckCircle className="w-4 h-4 mr-2" />
+                <p className="text-blue-800 font-semibold text-xs sm:text-sm mb-2 sm:mb-3 flex items-center">
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                   Pour une réponse optimale :
                 </p>
-                <ul className="text-sm text-blue-700 space-y-1">
+                <ul className="text-xs sm:text-sm text-blue-700 space-y-1">
                   <li className="flex items-center">
                     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                     Décrivez votre projet en détail
