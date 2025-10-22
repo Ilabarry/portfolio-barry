@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, Phone, Facebook, X, MapPin, Send, Clock, CheckCircle, MessageCircle, FileText } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCirclePlus, X, MapPin, Send, Clock, CheckCircle, FileText } from "lucide-react";
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -167,7 +167,7 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: <Phone className="w-6 h-6" />,
+      icon: <MessageCirclePlus className="w-6 h-6" />,
       platform: "WhatsApp",
       details: "+221 78 324 94 24",
       description: "Réponse instantanée",

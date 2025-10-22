@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, Phone, FileText, ArrowUp, Code, Database } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCirclePlus, FileText, ArrowUp, Code, Database } from "lucide-react";
 import Moncv from '../assets/docs/CV_ILA_BARRY_Développeur_Full-Stack_Aalyste_de_Données.pdf'
 
 const Footer = () => {
@@ -39,7 +39,7 @@ const Footer = () => {
       color: "hover:text-red-400"
     },
     {
-      icon: <Phone className="w-5 h-5" />,
+      icon: <MessageCirclePlus className="w-5 h-5" />,
       href: "https://wa.me/221783249424",
       label: "WhatsApp",
       color: "hover:text-green-400"

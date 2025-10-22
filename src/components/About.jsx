@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, Phone, Facebook, Award, BookOpen, Target, Calendar } from "lucide-react";
+import { Linkedin, Github, Mail, MessageCirclePlus, Facebook, Award, BookOpen, Target, Calendar } from "lucide-react";
 
 const About = () => {
   return (
@@ -128,7 +128,7 @@ const About = () => {
                     className="p-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition transform hover:scale-110"
                     aria-label="WhatsApp"
                   >
-                    <Phone className="w-5 h-5" />
+                    <MessageCirclePlus className="w-5 h-5" />
                   </a>
                   <a
                     href="mailto:barryila35@gmail.com"

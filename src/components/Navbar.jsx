@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Menu, X, Code, Database, Linkedin, Github, Mail, Phone } from 'lucide-react'
+import { Moon, Sun, Menu, X, Code, Database, Linkedin, Github, Mail, MessageCirclePlus } from 'lucide-react'
 import Logo from '../assets/img/logo.png'
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
@@ -59,7 +59,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       color: "hover:bg-red-600 border-red-200 dark:border-red-800"
     },
     { 
-      icon: <Phone className="w-4 h-4" />, 
+      icon: <MessageCirclePlus className="w-4 h-4" />, 
       href: "https://wa.me/221783249424",
       label: "WhatsApp",
       color: "hover:bg-green-600 border-green-200 dark:border-green-800"
