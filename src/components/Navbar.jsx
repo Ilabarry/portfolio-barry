@@ -72,12 +72,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         ? 'backdrop-blur-xl bg-white/95 shadow-sm border-b border-gray-100 dark:bg-gray-900/95 dark:border-gray-800' 
         : 'backdrop-blur-lg bg-white/90 border-b border-gray-100/50 dark:bg-gray-900/90 dark:border-gray-800/50'
     }`}>
-      <nav className="container mx-auto px-6">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3">
           {/* Logo et Brand */}
           <a 
             href="#hero" 
-            className="flex items-center space-x-3 group"
+            className="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0"
             onClick={() => setIsOpen(false)}
             data-aos="fade-right"
             data-aos-delay="100"
@@ -86,21 +86,21 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <img 
                 src={Logo}
                 alt="ILA Barry - Développeur Full-Stack & Data Analyst" 
-                width="42" 
-                height="42" 
+                width="40" 
+                height="40" 
                 className="rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-md"
               />
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-sm"></div>
+              <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-sm"></div>
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-100 dark:to-gray-300">
+              <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-100 dark:to-gray-300 leading-tight">
                 ILA Barry
               </span>
               <span className="text-xs text-gray-500 dark:text-gray-400 font-medium flex items-center">
                 <Code className="w-3 h-3 mr-1" />
-                Full-Stack Developer
+                Full-Stack
                 <Database className="w-3 h-3 mx-1" />
-                Data Analyst
+                Data
               </span>
             </div>
           </a>
@@ -113,7 +113,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group ${
+                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
                     isActive 
                       ? 'text-blue-600 dark:text-blue-400' 
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
@@ -133,7 +133,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           </div>
 
           {/* Actions Desktop */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-2">
             {/* Réseaux sociaux */}
             <div 
               className="flex items-center space-x-1"
@@ -171,7 +171,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           </div>
 
           {/* Menu Mobile */}
-          <div className="flex lg:hidden items-center space-x-2">
+          <div className="flex lg:hidden items-center space-x-1">
             {/* Bouton thème mobile */}
             <button 
               onClick={toggleDarkMode}
@@ -199,7 +199,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         {/* Menu Mobile Expandable */}
         {isOpen && (
           <div 
-            className="lg:hidden border-t border-gray-100 dark:border-gray-800 mt-2 pb-6"
+            className="lg:hidden border-t border-gray-100 dark:border-gray-800 mt-2 pb-4"
             data-aos="fade-down"
             data-aos-delay="100"
           >
@@ -211,7 +211,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`px-4 py-3 text-base font-medium transition-all duration-200 rounded-lg mx-2 flex items-center ${
+                    className={`px-3 py-3 text-sm font-medium transition-all duration-200 rounded-lg mx-1 flex items-center ${
                       isActive
                         ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-l-4 border-blue-600'
                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
@@ -219,7 +219,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     data-aos="fade-right"
                     data-aos-delay={100 + (index * 50)}
                   >
-                    <div className={`w-2 h-2 rounded-full mr-3 ${
+                    <div className={`w-1.5 h-1.5 rounded-full mr-3 ${
                       isActive ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
                     }`}></div>
                     {item.label}
@@ -229,12 +229,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               
               {/* Réseaux sociaux mobile */}
               <div 
-                className="px-4 pt-6"
+                className="px-3 pt-4"
                 data-aos="fade-up"
                 data-aos-delay="400"
               >
-                <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 font-medium text-center">Réseaux sociaux</p>
-                <div className="flex justify-center gap-2">
+                <p className="text-gray-500 dark:text-gray-400 text-xs mb-2 font-medium text-center">Réseaux sociaux</p>
+                <div className="flex justify-center gap-1">
                   {socialLinks.map((item, i) => (
                     <a
                       key={i}
@@ -242,7 +242,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
-                      className={`p-3 bg-gray-100 dark:bg-gray-800 border rounded-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105`}
+                      className={`p-2 bg-gray-100 dark:bg-gray-800 border rounded-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105 text-xs`}
                       aria-label={item.label}
                     >
                       {item.icon}
