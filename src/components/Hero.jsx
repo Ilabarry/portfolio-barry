@@ -80,7 +80,7 @@ const Hero = () => {
             {/* Titre principal */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl lg:text-7xl font-bold leading-tight"
+              className="text-5xl lg:text-6xl font-bold leading-tight"
             >
               ILA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Barry</span>
             </motion.h1>
@@ -90,7 +90,7 @@ const Hero = () => {
               variants={itemVariants}
               className="space-y-4"
             >
-              <div className="text-2xl lg:text-4xl font-light text-blue-100 min-h-[60px]">
+              <div className="text-2xl lg:text-3xl font-light text-blue-100 min-h-[50px]">
                 <TypeAnimation
                   sequence={[
                     "Développeur Full-Stack 💻",
@@ -112,7 +112,7 @@ const Hero = () => {
 
               <motion.p
                 variants={itemVariants}
-                className="text-xl text-blue-100 leading-relaxed max-w-2xl"
+                className="text-lg text-blue-100 leading-relaxed max-w-2xl"
               >
                 Je transforme vos idées en <span className="text-cyan-300 font-semibold">applications web performantes </span> 
                  et vos données en <span className="text-cyan-300 font-semibold">insights actionnables</span>. 
