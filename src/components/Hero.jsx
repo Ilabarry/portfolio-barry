@@ -196,7 +196,7 @@ const Hero = () => {
               <motion.img
                 src={Image}
                 alt="Portrait de ILA Barry - Développeur Full-Stack & Analyste de Données"
-                className="relative w-80 h-96 lg:w-96 lg:h-[450px] object-cover rounded-2xl shadow-2xl border-x-4 mb-16 border-x-white"
+                className="relative w-72 h-96 lg:w-96 lg:h-[400px] object-cover rounded-2xl shadow-2xl border-x-4 mb-16 border-x-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
