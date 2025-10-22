@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden relative"
+      className="min-h-full flex items-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden relative"
     >
       {/* Effets de fond animés */}
       <motion.div
@@ -80,7 +80,7 @@ const Hero = () => {
             {/* Titre principal */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-5xl lg:text-5xl font-bold leading-tight"
             >
               ILA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Barry</span>
             </motion.h1>
@@ -90,7 +90,7 @@ const Hero = () => {
               variants={itemVariants}
               className="space-y-4"
             >
-              <div className="text-2xl lg:text-3xl font-light text-blue-100 min-h-[50px]">
+              <div className="text-2xl lg:text-2xl font-light text-blue-100 min-h-[50px]">
                 <TypeAnimation
                   sequence={[
                     "Développeur Full-Stack 💻",
@@ -123,11 +123,11 @@ const Hero = () => {
             {/* Boutons CTA */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <motion.a
                 href="#contact"
-                className="group bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-cyan-500/25 transform hover:-translate-y-1"
+                className="group bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 flex items-center justify-center shadow-2xl hover:shadow-cyan-500/25 transform hover:-translate-y-1"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -139,7 +139,7 @@ const Hero = () => {
                 href={Moncv}
                 target="_blank"
                 rel="noopener"
-                className="group border-2 border-white/50 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
+                className="group border-2 border-white/50 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -151,7 +151,7 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               variants={itemVariants}
-              className="grid grid-cols-3 gap-6 pt-8 border-t border-white/20"
+              className="grid grid-cols-3 gap-6 pt-4 border-t border-white/20"
             >
               {[
                 { number: "5+", label: "Projets" },
@@ -249,7 +249,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
