@@ -53,7 +53,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
       </motion.div>
 
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           
           {/* Colonne texte animée */}
@@ -196,7 +196,7 @@ const Hero = () => {
               <motion.img
                 src={Image}
                 alt="Portrait de ILA Barry - Développeur Full-Stack & Analyste de Données"
-                className="relative w-72 h-96 lg:w-96 lg:h-[400px] object-cover rounded-2xl shadow-2xl border-x-4 mb-16 border-x-white"
+                className="relative w-72 h-96 lg:w-96 lg:h-[400px] object-cover rounded-2xl shadow-2xl border-x-4 mt-6 border-x-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
@@ -249,7 +249,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
