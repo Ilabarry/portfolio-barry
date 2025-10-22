@@ -67,86 +67,85 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   ]
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'backdrop-blur-xl bg-white/95 shadow-sm border-b border-gray-100 dark:bg-gray-900/95 dark:border-gray-800' 
-        : 'backdrop-blur-lg bg-white/90 border-b border-gray-100/50 dark:bg-gray-900/90 dark:border-gray-800/50'
-    }`}>
-      <nav className="container mx-auto px-3 sm:px-4 md:px-6">
-        <div className="flex justify-between items-center py-2 sm:py-3">
-          {/* Logo et Brand - Version compacte pour mobile */}
-          <a 
-            href="#hero" 
-            className="flex items-center space-x-2 group flex-shrink-0 min-w-0"
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'backdrop-blur-xl bg-white/95 shadow-sm border-b border-gray-100 dark:bg-gray-900/95 dark:border-gray-800'
+          : 'backdrop-blur-lg bg-white/90 border-b border-gray-100/50 dark:bg-gray-900/90 dark:border-gray-800/50'
+      }`}
+    >
+      <nav className="container mx-auto px-3 sm:px-6">
+        {/* ✅ Ligne principale de la navbar */}
+        <div className="flex items-center justify-between py-2 sm:py-3 gap-2 sm:gap-4">
+          {/* --- Logo et marque --- */}
+          <a
+            href="#hero"
+            className="flex items-center space-x-2 sm:space-x-3 group"
             onClick={() => setIsOpen(false)}
             data-aos="fade-right"
             data-aos-delay="100"
           >
-            <div className="relative flex-shrink-0">
-              <img 
+            <div className="relative">
+              <img
                 src={Logo}
-                alt="ILA Barry - Développeur & Analyste" 
-                width="32"
-                height="32"
-                className="rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:shadow-md"
+                alt="ILA Barry - Développeur & Analyste"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-md"
               />
-              <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-sm"></div>
+              <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-sm"></div>
             </div>
-            <div className="flex flex-col min-w-0">
-              <span className="font-bold text-base sm:text-lg bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-100 dark:to-gray-300 whitespace-nowrap">
+            <div className="flex flex-col">
+              <span className="font-bold text-lg sm:text-xl bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-gray-100 dark:to-gray-300">
                 ILA Barry
               </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium flex items-center whitespace-nowrap">
-                <Code className="w-2 h-2 mr-1" />
-                Dev
-                <Database className="w-2 h-2 mx-1" />
-                Analyste
+              <span className="text-xs text-gray-500 dark:text-gray-400 font-medium flex items-center">
+                <Code className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
+                <span className="hidden xs:inline">Développeur</span>
+                <Database className="w-2 h-2 sm:w-3 sm:h-3 mx-1" />
+                <span className="hidden xs:inline">Analyste</span>
               </span>
             </div>
           </a>
 
-          {/* Navigation Desktop */}
-          <div className="hidden lg:flex items-center space-x-1 flex-shrink-0">
+          {/* --- Navigation Desktop --- */}
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item, index) => {
               const isActive = activeSection === item.href.substring(1)
               return (
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group whitespace-nowrap ${
-                    isActive 
-                      ? 'text-blue-600 dark:text-blue-400' 
+                  className={`relative px-3 py-2 text-md font-medium transition-all duration-300 group ${
+                    isActive
+                      ? 'text-blue-600 dark:text-blue-400'
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
                   }`}
                   data-aos="fade-down"
-                  data-aos-delay={100 + (index * 50)}
+                  data-aos-delay={100 + index * 50}
                 >
                   {item.label}
-                  <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
-                    isActive 
-                      ? 'w-6 bg-blue-600 dark:bg-blue-400' 
-                      : 'bg-transparent group-hover:w-2 group-hover:bg-gray-400'
-                  }`}></span>
+                  <span
+                    className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full transition-all duration-300 ${
+                      isActive
+                        ? 'w-6 bg-blue-600 dark:bg-blue-400'
+                        : 'bg-transparent group-hover:w-2 group-hover:bg-gray-400'
+                    }`}
+                  ></span>
                 </a>
               )
             })}
           </div>
 
-          {/* Actions Desktop */}
-          <div className="hidden lg:flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+          {/* --- Actions Desktop --- */}
+          <div className="hidden lg:flex items-center space-x-2 sm:space-x-3">
             {/* Réseaux sociaux */}
-            <div 
-              className="flex items-center space-x-1"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            >
+            <div className="flex items-center space-x-1" data-aos="fade-left" data-aos-delay="200">
               {socialLinks.map((item, i) => (
                 <a
                   key={i}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-1.5 sm:p-2 bg-transparent border rounded-lg text-gray-500 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105 hover:shadow-md flex-shrink-0`}
+                  className={`p-1.5 sm:p-2 bg-transparent border rounded-lg text-gray-500 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105 hover:shadow-md`}
                   aria-label={item.label}
                   title={item.label}
                 >
@@ -156,12 +155,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             {/* Séparateur */}
-            <div className="w-px h-4 sm:h-6 bg-gray-200 dark:bg-gray-700 mx-1 flex-shrink-0"></div>
+            <div className="w-px h-4 sm:h-6 bg-gray-200 dark:bg-gray-700 mx-1"></div>
 
             {/* Bouton thème */}
-            <button 
+            <button
               onClick={toggleDarkMode}
-              className="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-sm flex-shrink-0"
+              className="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-sm"
               aria-label={darkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}
               data-aos="fade-left"
               data-aos-delay="300"
@@ -170,40 +169,40 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </button>
           </div>
 
-          {/* Menu Mobile - Version ultra compacte */}
-          <div className="flex lg:hidden items-center space-x-1 flex-shrink-0">
+          {/* --- Menu Mobile --- */}
+          <div className="flex lg:hidden items-center space-x-1 sm:space-x-2">
             {/* Bouton thème mobile */}
-            <button 
+            <button
               onClick={toggleDarkMode}
-              className="p-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 flex-shrink-0"
+              className="p-1 sm:p-1.5 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               aria-label={darkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}
               data-aos="fade-left"
               data-aos-delay="200"
             >
-              {darkMode ? <Sun className="w-3 h-3" /> : <Moon className="w-3 h-3" />}
+              {darkMode ? <Sun className="w-3 h-3 sm:w-4 sm:h-4" /> : <Moon className="w-3 h-3 sm:w-4 sm:h-4" />}
             </button>
 
             {/* Bouton menu mobile */}
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 flex-shrink-0"
+              className="p-1 sm:p-1.5 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               aria-label="Menu"
               data-aos="fade-left"
               data-aos-delay="300"
             >
-              {isOpen ? <X className="w-3 h-3" /> : <Menu className="w-3 h-3" />}
+              {isOpen ? <X className="w-3 h-3 sm:w-4 sm:h-4" /> : <Menu className="w-3 h-3 sm:w-4 sm:h-4" />}
             </button>
           </div>
         </div>
 
-        {/* Menu Mobile Expandable */}
+        {/* --- Menu Mobile Expandable --- */}
         {isOpen && (
-          <div 
-            className="lg:hidden border-t border-gray-100 dark:border-gray-800 mt-2 pb-4"
+          <div
+            className="lg:hidden border-t border-gray-100 dark:border-gray-800 mt-2 pb-4 sm:pb-6"
             data-aos="fade-down"
             data-aos-delay="100"
           >
-            <div className="flex flex-col space-y-1 pt-3">
+            <div className="flex flex-col space-y-1 pt-3 sm:pt-4">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.href.substring(1)
                 return (
@@ -211,30 +210,30 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`px-3 py-2 text-sm font-medium transition-all duration-200 rounded-lg mx-1 flex items-center ${
+                    className={`px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base font-medium transition-all duration-200 rounded-lg mx-1 sm:mx-2 flex items-center ${
                       isActive
                         ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-l-4 border-blue-600'
                         : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-100'
                     }`}
                     data-aos="fade-right"
-                    data-aos-delay={100 + (index * 50)}
+                    data-aos-delay={100 + index * 50}
                   >
-                    <div className={`w-1.5 h-1.5 rounded-full mr-2 ${
-                      isActive ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
-                    }`}></div>
+                    <div
+                      className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mr-2 sm:mr-3 ${
+                        isActive ? 'bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
+                      }`}
+                    ></div>
                     {item.label}
                   </a>
                 )
               })}
-              
+
               {/* Réseaux sociaux mobile */}
-              <div 
-                className="px-3 pt-4"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <p className="text-gray-500 dark:text-gray-400 text-xs mb-2 font-medium text-center">Réseaux sociaux</p>
-                <div className="flex justify-center gap-1">
+              <div className="px-3 sm:px-4 pt-4 sm:pt-6" data-aos="fade-up" data-aos-delay="400">
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 font-medium text-center">
+                  Réseaux sociaux
+                </p>
+                <div className="flex justify-center gap-1 sm:gap-2">
                   {socialLinks.map((item, i) => (
                     <a
                       key={i}
@@ -242,7 +241,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
-                      className={`p-2 bg-gray-100 dark:bg-gray-800 border rounded-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105`}
+                      className={`p-2 sm:p-3 bg-gray-100 dark:bg-gray-800 border rounded-lg text-gray-600 dark:text-gray-400 transition-all duration-300 ${item.color} hover:text-white hover:scale-105`}
                       aria-label={item.label}
                     >
                       {item.icon}
@@ -255,6 +254,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         )}
       </nav>
     </header>
+
   )
 }
 
