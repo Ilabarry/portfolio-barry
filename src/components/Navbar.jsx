@@ -100,7 +100,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
         {/* Ligne principale */}
-        <div className="flex items-center justify-between py-3 md:py-4 min-h-[70px]">
+        <div className="flex items-center justify-between py-3 md:py-2 min-h-[70px]">
           
           {/* Logo avec animation */}
           <motion.div 
