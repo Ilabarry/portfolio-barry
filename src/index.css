@@ -6,17 +6,19 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    /* Empêche le débordement horizontal */
-    overflow-x: hidden;
+    /* Correction du débordement */
     width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
   }
   
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     @apply bg-gray-50 text-gray-900 pt-16;
-    /* Empêche le débordement horizontal */
-    /* overflow-x: hidden; */
+    /* Correction du débordement */
     width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
     position: relative;
   }
   
@@ -24,9 +26,10 @@
     @apply bg-gray-900 text-gray-100;
   }
 
-  /* Reset des marges et padding pour tous les éléments */
+  /* Reset pour tous les éléments */
   * {
     box-sizing: border-box;
+    max-width: 100%;
   }
 
   /* Assure que les images ne débordent pas */
@@ -34,19 +37,26 @@
     max-width: 100%;
     height: auto;
   }
+
+  /* Correction pour tous les éléments de bloc */
+  div, section, header, footer, nav, main, article, aside {
+    max-width: 100%;
+  }
 }
 
 @layer components {
   /* Container global pour éviter les débordements */
   .container {
     @apply mx-auto px-4 sm:px-6;
+    width: 100%;
     max-width: 100%;
   }
 
   .card-pro {
     @apply bg-white border border-gray-200 rounded-2xl p-6 shadow-lg flex flex-col transition-all duration-300;
-    /* Empêche le débordement */
+    width: 100%;
     max-width: 100%;
+    overflow: hidden;
   }
   
   .card-pro:hover {
@@ -134,15 +144,11 @@
     animation: scale-in 0.3s ease-out;
   }
 
-  /* Correction spécifique pour les débordements mobiles */
-  .mobile-overflow-fix {
-    @apply overflow-hidden;
-  }
-
-  /* Force le word-break pour les longs textes */
-  .break-words {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+  /* Correction spécifique pour les débordements */
+  .overflow-fix {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 }
 
@@ -154,5 +160,49 @@
   
   .min-w-0 {
     min-width: 0;
+  }
+  
+  .w-full-important {
+    width: 100% !important;
+  }
+  
+  /* Cache les scrollbars horizontaux */
+  .no-horizontal-scroll {
+    overflow-x: hidden;
+  }
+  
+  /* Permet le scrolling vertical mais bloque l'horizontal */
+  .vertical-scroll-only {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+/* Correction globale pour le layout */
+#root, .App, .app-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Force tous les éléments à respecter les limites */
+* {
+  box-sizing: border-box;
+}
+
+/* Correction spécifique pour les problèmes de largeur sur mobile */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Assure que tous les conteneurs respectent la largeur de l'écran */
+  .mobile-width-fix {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
 }
