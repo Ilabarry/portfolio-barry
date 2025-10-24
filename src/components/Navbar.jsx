@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Menu, X, Code, Database, Linkedin, Github, Mail, MessageCirclePlus } from 'lucide-react'
+import { Moon, Sun, Menu, X, Code, Database, Linkedin, Github, Mail, MessageCirclePlus, Sparkles, Target, BookOpen } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../assets/img/logo.png'
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
@@ -30,239 +31,373 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   }, [])
 
   const navItems = [
-    { href: '#about', label: 'À propos' },
-    { href: '#services', label: 'Services' },
-    { href: '#skills', label: 'Compétences' },
-    { href: '#projects', label: 'Projets' },
-    { href: '#data-analysis', label: 'Data Analysis' },
-    { href: '#testimonials', label: 'Témoignages' },
-    { href: '#contact', label: 'Contact' }
+    { href: '#about', label: 'À propos', icon: <Target className="w-3 h-3" /> },
+    { href: '#services', label: 'Services', icon: <Sparkles className="w-3 h-3" /> },
+    { href: '#skills', label: 'Compétences', icon: <Code className="w-3 h-3" /> },
+    { href: '#projects', label: 'Projets', icon: <BookOpen className="w-3 h-3" /> },
+    { href: '#data-analysis', label: 'Data Analysis', icon: <Database className="w-3 h-3" /> },
+    { href: '#contact', label: 'Contact', icon: <MessageCirclePlus className="w-3 h-3" /> }
   ]
 
   const professionalLinks = [
     { 
       icon: <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />, 
       href: "https://www.linkedin.com/in/ila-barry-259008343/",
-      label: "LinkedIn"
+      label: "LinkedIn",
+      color: "hover:bg-blue-600"
     },
     { 
       icon: <Github className="w-3 h-3 sm:w-4 sm:h-4" />, 
       href: "https://github.com/Ilabarry",
-      label: "GitHub"
+      label: "GitHub",
+      color: "hover:bg-gray-800"
     },
     { 
       icon: <Mail className="w-3 h-3 sm:w-4 sm:h-4" />, 
       href: "mailto:barryila35@gmail.com",
-      label: "Email"
+      label: "Email",
+      color: "hover:bg-red-600"
     },
     { 
       icon: <MessageCirclePlus className="w-3 h-3 sm:w-4 sm:h-4" />, 
       href: "https://wa.me/221783249424",
-      label: "WhatsApp"
+      label: "WhatsApp",
+      color: "hover:bg-green-600"
     }
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3
+      }
+    }
+  }
+
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
         scrolled 
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-b border-gray-200/80 dark:border-gray-800/80' 
-          : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-100/50 dark:border-gray-800/50'
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border-b border-gray-200/50 dark:border-gray-800/50' 
+          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 w-full">
-        
-        {/* Ligne principale avec max-w-full */}
-        <div className="flex items-center justify-between py-2 sm:py-3 md:py-4 min-h-[56px] sm:min-h-[60px] w-full max-w-full">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-1">
+        {/* Ligne principale */}
+        <div className="flex items-center justify-between py-3 md:py-4 min-h-[70px]">
           
-          {/* Logo */}
-          <div className="flex items-center flex-shrink-0 max-w-full">
+          {/* Logo avec animation */}
+          <motion.div 
+            className="flex items-center flex-shrink-0"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             <a 
               href="#hero" 
-              className="flex items-center gap-2 sm:gap-3 group max-w-full"
+              className="flex items-center gap-3 group"
               onClick={() => setIsOpen(false)}
             >
-              <div className="relative flex-shrink-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg sm:rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* Logo avec effet de lueur */}
+              <div className="relative">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl blur-md opacity-0 group-hover:opacity-70"
+                  transition={{ duration: 0.3 }}
+                />
                 <img 
                   src={Logo}
                   alt="ILA Barry - Développeur Full-Stack & Analyste de Données" 
-                  className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg border-2 border-white dark:border-gray-800"
+                  className="relative w-10 h-10 md:w-12 md:h-12 rounded-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl border-2 border-white dark:border-gray-800 shadow-lg"
                 />
-                <div className="absolute -bottom-1 -right-1 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-gradient-to-r from-green-400 to-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-lg"></div>
+                <motion.div 
+                  className="absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-400 to-green-500 rounded-full border-2 border-white dark:border-gray-900 shadow-lg"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
               </div>
               
               {/* Texte du logo */}
-              <div className="flex flex-col max-w-full">
-                <span className="font-bold text-gray-900 dark:text-white text-base sm:text-lg md:text-xl leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              <div className="flex flex-col">
+                <motion.span 
+                  className="font-bold text-gray-900 dark:text-white text-xl md:text-2xl leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+                  whileHover={{ scale: 1.05 }}
+                >
                   ILA Barry
-                </span>
+                </motion.span>
                 
                 {/* Badges compétences */}
-                <div className="flex items-center gap-1 sm:gap-2 text-xs text-gray-600 dark:text-gray-400 font-medium mt-0.5 max-w-full">
-                  {/* Version mobile compacte */}
-                  <div className="sm:hidden flex items-center gap-1 bg-blue-50 dark:bg-blue-900/20 px-1.5 py-0.5 rounded-full">
-                    <Code className="w-2.5 h-2.5 text-blue-600 dark:text-blue-400" />
-                    <span className="text-blue-700 dark:text-blue-300 text-xs">Dev</span>
-                  </div>
-                  
-                  {/* Version desktop complète */}
-                  <div className="hidden sm:flex items-center gap-1 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-full">
+                <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400 font-medium mt-1">
+                  <motion.div 
+                    className="flex items-center gap-1 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded-full border border-blue-100 dark:border-blue-800"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <Code className="w-3 h-3 text-blue-600 dark:text-blue-400" />
-                    <span className="text-blue-700 dark:text-blue-300 text-xs">Développeur</span>
-                  </div>
+                    <span className="text-blue-700 dark:text-blue-300 text-xs">Full-Stack</span>
+                  </motion.div>
                   
-                  <div className="hidden sm:flex items-center gap-1 bg-purple-50 dark:bg-purple-900/20 px-2 py-1 rounded-full">
+                  <motion.div 
+                    className="flex items-center gap-1 bg-purple-50 dark:bg-purple-900/30 px-2 py-1 rounded-full border border-purple-100 dark:border-purple-800"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <Database className="w-3 h-3 text-purple-600 dark:text-purple-400" />
-                    <span className="text-purple-700 dark:text-purple-300 text-xs">Analyste</span>
-                  </div>
+                    <span className="text-purple-700 dark:text-purple-300 text-xs">Data Analyst</span>
+                  </motion.div>
                 </div>
               </div>
             </a>
-          </div>
+          </motion.div>
 
           {/* Navigation Desktop */}
-          <div className="hidden lg:flex items-center space-x-0 xl:space-x-1 flex-shrink-0 overflow-hidden max-w-full">
+          <motion.div 
+            className="hidden lg:flex items-center space-x-1"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {navItems.map((item, index) => {
               const isActive = activeSection === item.href.substring(1)
               return (
-                <a
+                <motion.a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3 py-2 xl:px-4 xl:py-2.5 text-sm font-semibold transition-all duration-300 rounded-lg xl:rounded-xl mx-0.5 xl:mx-1 group flex-shrink-0 ${
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`relative px-4 py-2.5 text-sm font-semibold transition-all duration-300 rounded-xl group flex items-center gap-2 ${
                     isActive 
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 shadow-sm' 
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 shadow-lg' 
                       : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'
                   }`}
                 >
+                  <span className={`transition-colors duration-300 ${isActive ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600'}`}>
+                    {item.icon}
+                  </span>
                   {item.label}
+                  
+                  {/* Indicateur actif animé */}
                   {isActive && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 xl:w-6 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                    <motion.div 
+                      className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                      layoutId="activeIndicator"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
                   )}
-                  <div className={`absolute inset-0 rounded-lg xl:rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300 ${isActive ? 'opacity-10' : ''}`}></div>
-                </a>
+                  
+                  {/* Effet de fond au survol */}
+                  <div className={`absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300 ${isActive ? 'opacity-10' : ''}`} />
+                </motion.a>
               )
             })}
-          </div>
+          </motion.div>
 
           {/* Actions Desktop */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-3 flex-shrink-0 overflow-hidden max-w-full">
-            {/* Réseaux sociaux */}
-            <div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-800/50 rounded-xl lg:rounded-2xl p-1 border border-gray-200 dark:border-gray-700 flex-shrink-0">
+          <motion.div 
+            className="hidden md:flex items-center space-x-3"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Réseaux sociaux avec animations */}
+            <motion.div 
+              className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-800/50 rounded-2xl p-1 border border-gray-200 dark:border-gray-700 shadow-lg"
+              whileHover={{ scale: 1.02 }}
+            >
               {professionalLinks.map((item, index) => (
-                <a
+                <motion.a
                   key={index}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1.5 sm:p-2 rounded-lg lg:rounded-xl border border-transparent bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-blue-600 hover:text-white flex-shrink-0"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`p-2 rounded-xl border border-transparent bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 transition-all duration-300 hover:text-white shadow-sm ${item.color}`}
                   aria-label={item.label}
                   title={item.label}
                 >
                   {item.icon}
-                </a>
+                </motion.a>
               ))}
-            </div>
+            </motion.div>
 
             {/* Séparateur */}
-            <div className="hidden lg:block w-px h-6 bg-gradient-to-b from-gray-300 to-gray-100 dark:from-gray-700 dark:to-gray-600 flex-shrink-0"></div>
+            <motion.div 
+              className="w-px h-6 bg-gradient-to-b from-gray-300 to-gray-100 dark:from-gray-700 dark:to-gray-600"
+              variants={itemVariants}
+            />
 
-            {/* Bouton thème */}
-            <button 
+            {/* Bouton thème avec animation */}
+            <motion.button 
               onClick={toggleDarkMode}
-              className="p-1.5 sm:p-2 rounded-lg lg:rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:shadow-md transition-all duration-300 hover:scale-105 group flex-shrink-0"
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:shadow-lg transition-all duration-300 group shadow-sm"
               aria-label={darkMode ? 'Activer le mode clair' : 'Activer le mode sombre'}
             >
               {darkMode ? (
-                <Sun className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" />
+                <Sun className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
               ) : (
-                <Moon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform duration-300" />
+                <Moon className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
               )}
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
 
           {/* Menu Mobile */}
-          <div className="flex md:hidden items-center space-x-1 sm:space-x-2 flex-shrink-0 overflow-hidden max-w-full">
+          <motion.div 
+            className="flex md:hidden items-center space-x-2"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* Bouton thème mobile */}
-            <button 
+            <motion.button 
               onClick={toggleDarkMode}
-              className="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 flex-shrink-0"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 shadow-sm"
               aria-label={darkMode ? 'Mode clair' : 'Mode sombre'}
             >
-              {darkMode ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
-            </button>
+              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </motion.button>
 
             {/* Bouton menu mobile */}
-            <button 
+            <motion.button 
               onClick={() => setIsOpen(!isOpen)}
-              className="p-1.5 sm:p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 hover:shadow-md flex-shrink-0"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 hover:shadow-lg shadow-sm"
               aria-label="Menu"
             >
-              {isOpen ? (
-                <X className="w-4 h-4 sm:w-5 sm:h-5 transform rotate-90 transition-transform duration-300" />
-              ) : (
-                <Menu className="w-4 h-4 sm:w-5 sm:h-5 transform hover:rotate-180 transition-transform duration-300" />
-              )}
-            </button>
-          </div>
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </motion.div>
         </div>
 
         {/* Menu Mobile Expandable */}
-        {isOpen && (
-          <div className="md:hidden border-t border-gray-200 dark:border-gray-700 pt-4 pb-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-xl sm:rounded-2xl mt-2 mx-1 sm:mx-2 shadow-xl w-full max-w-full overflow-hidden">
-            
-            {/* Navigation mobile */}
-            <div className="space-y-2 mb-6 px-3 sm:px-4 w-full">
-              {navItems.map((item, index) => {
-                const isActive = activeSection === item.href.substring(1)
-                return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`block px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold transition-all duration-300 rounded-lg border-l-4 w-full ${
-                      isActive
-                        ? 'bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 text-blue-700 dark:text-blue-300 border-blue-500 shadow-sm'
-                        : 'text-gray-700 dark:text-gray-300 border-transparent hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-gray-300 dark:hover:border-gray-600'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between w-full">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl mt-2 shadow-2xl overflow-hidden"
+            >
+              <motion.div 
+                className="space-y-1 p-4"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+              >
+                {navItems.map((item, index) => {
+                  const isActive = activeSection === item.href.substring(1)
+                  return (
+                    <motion.a
+                      key={item.href}
+                      href={item.href}
+                      variants={itemVariants}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center gap-3 px-4 py-3 text-base font-semibold transition-all duration-300 rounded-xl border-l-4 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 text-blue-700 dark:text-blue-300 border-blue-500 shadow-lg'
+                          : 'text-gray-700 dark:text-gray-300 border-transparent hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-gray-300 dark:hover:border-gray-600'
+                      }`}
+                    >
+                      <span className={`transition-colors duration-300 ${isActive ? 'text-blue-600' : 'text-gray-400'}`}>
+                        {item.icon}
+                      </span>
                       {item.label}
                       {isActive && (
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                        <motion.div 
+                          className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full ml-auto"
+                          layoutId="mobileActiveIndicator"
+                        />
                       )}
-                    </div>
-                  </a>
-                )
-              })}
-            </div>
+                    </motion.a>
+                  )
+                })}
 
-            {/* Réseaux sociaux mobile */}
-            <div className="px-3 sm:px-4 w-full">
-              <p className="text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 text-center uppercase tracking-wider">
-                Réseaux Professionnels
-              </p>
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 w-full">
-                {professionalLinks.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 p-2 sm:p-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-300 hover:shadow-md hover:bg-blue-600 hover:text-white hover:border-blue-600 w-full"
-                    aria-label={item.label}
-                  >
-                    {item.icon}
-                    <span className="text-xs sm:text-sm font-medium">{item.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+                {/* Réseaux sociaux mobile */}
+                <motion.div 
+                  className="pt-4 border-t border-gray-200 dark:border-gray-700"
+                  variants={itemVariants}
+                >
+                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-3 text-center uppercase tracking-wider">
+                    Me contacter
+                  </p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {professionalLinks.map((item, index) => (
+                      <motion.a
+                        key={index}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variants={itemVariants}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center justify-center gap-2 p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-all duration-300 hover:text-white shadow-sm ${item.color}`}
+                        aria-label={item.label}
+                      >
+                        {item.icon}
+                        <span className="text-sm font-medium">{item.label}</span>
+                      </motion.a>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* CTA mobile */}
+                <motion.a
+                  href="#contact"
+                  variants={itemVariants}
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg mt-4"
+                >
+                  <MessageCirclePlus className="w-4 h-4" />
+                  Discuter de votre projet
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   )
 }
 
