@@ -40,7 +40,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-full flex items-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden relative"
+      className="min-h-full px-10 flex items-center bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden relative"
     >
       {/* Effets de fond animés */}
       <motion.div
@@ -53,7 +53,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-purple-500 rounded-full blur-3xl"></div>
       </motion.div>
 
-      <div className="container mt-16 mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-14 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-14 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8 md:gap-12">
           
           {/* Colonne texte animée */}
