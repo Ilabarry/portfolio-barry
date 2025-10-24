@@ -184,7 +184,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             {/* === MENU MOBILE - Responsive === */}
-            <div className="flex md:hidden items-center space-x-1 sm:space-x-2 flex-shrink-0">
+            <div className="flex md:hidden items-center space-x-1 sm:space-x-2">
               {/* Bouton thème mobile */}
               <button 
                 onClick={toggleDarkMode}
